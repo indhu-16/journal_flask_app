@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask Website{% endblock %}</title>
+    <link rel="stylesheet" href="../static/main.css">
+
+</head>
+<body>
+    <header>
+        <!-- <h1>Welcome to My Journal Website</h1> -->
+        <nav class="navbar">
+            <div class="logo">Memoir</div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                {% if session.get('user_id') %}
+                <li><a href="{{ url_for('my_journal') }}">My Journal</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('signin') }}">Login</a></li>
+                <li><a href="{{ url_for('signup') }}">signup</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- This will be replaced by specific content in child templates -->
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 MEMOIR. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

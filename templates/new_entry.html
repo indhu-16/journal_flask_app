@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Create New Entry{% endblock %}
+
+{% block content %}
+<div class="entry">
+    <h2 class="text-center">Create New Journal Entry</h2>
+    <form method="POST" action="{{ url_for('new_entry') }}" class="mt-4">
+        <div class="title">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter a title" required>
+        </div>
+        <div class="content">
+            <label for="content" class="form-label">Content</label>
+            <textarea class="form-control" id="content" name="content" rows="5" placeholder="Write your thoughts here..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Save Entry</button>
+    </form>
+</div>
+{% endblock %}
